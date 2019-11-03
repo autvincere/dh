@@ -1,0 +1,79 @@
+[
+
+     {
+         "nombreRegion": "arica y parinacota",
+         "comunas": [ 
+             "arica"
+     ]
+     },
+     {
+         "nombreRegion": "tarapacá",
+         "comunas": ["iquique", "alto hospicio", "pozo almonte", "camiña", "colchane", "huara",
+             "pica"
+         ]
+     },
+     {
+         "nombreRegion": "antofagasta",
+         "comunas": [
+             "antofagasta", "calama","tocopilla"
+         ]
+     },
+     {
+         "nombreRegion": "atacama",
+         "comunas": ["copiapó", "caldera", "chañaral", "diego de almagro", "vallenar"
+         ]
+     },
+     {
+        "nombreRegion": "aysén",
+        "comunas": ["aysén", "cohaique"]
+     },
+     {
+        "nombreRegion": "biobío",
+        "comunas": ["arauco","cabrero","caete","chiguayante","coelemu","concepcion","coronel","curanilahue","hualpen","laja","lebu","los angeles","lota","mulchen","nacimiento","penco","quillon","san-carlos","san-pedro-de-la-paz","talcahuano","tucapel","yumbel"]
+     },
+     {
+         "nombreRegion": "coquimbo",
+         "comunas": ["la serena", "coquimbo","illapel"
+         ]
+     },
+     {
+        "nombreRegion": "La Araucanía",
+        "comunas": ["angol", "collipulli","curacautin","lautaro","loncoche","nueva-imperial","pitrufquen","pucon","temuco","traiguen","victoria","villarrica"]
+     },
+     {
+        "nombreRegion": "Los Lagos",
+        "comunas": ["Ancud", "calbuco","castro","frutillar","llanquihue","osorno","puerto-montt","purranque","quellon","quinchao"]
+     },
+     {
+        "nombreRegion": "los ríos",
+        "comunas": ["la union", "los lagos","mariquina","paillaco","panguipulli","rio-bueno","valdivia"]
+     },
+     {
+        "nombreRegion": "magallanes",
+        "comunas": ["Punta Arenas"]
+     },
+     {
+        "nombreRegion": "maule",
+        "comunas": ["cauquenes", "Metropolitana","curico","linares","molina","romeral","sagrada familia","san clemente","san javier","talca","teno"]
+     },
+     {
+        "nombreRegion": "metropolitana",
+        "comunas": ["buin","Metropolitana","conchali","curacavi","estacion central","huechuraba","independencia","la cisterna","la florida","la reina","las condes","lo barnechea","maipu","ñuñoa","peñalolen","providencia","pudahuel","puente alto","quinta normal","renca","san bernardo","san joaquin","san miguel","santiago","talagante","til-til","vitacura"]
+     },
+     {
+        "nombreRegion": "ñuble",
+        "comunas": ["chillan","chillan-viejo","coihueco", "bulnes","yungay","el-carmen"]
+     },
+     {
+        "nombreRegion": "O'Higgins",
+        "comunas": ["chimbarongo","graneros","las-cabras", "machali","nancagua","peumo","rancagua","san fernando"]
+     },
+     {
+        "nombreRegion": "tarapacá",
+        "comunas": ["alto hospicio","iquique"]
+     },
+     {
+        "nombreRegion": "valparaíso",
+        "comunas": ["cartagena","casablanca","el quisco","el tabo","limache","los andes","olmue","puchuncavi","quillota","quintero","san felipe","santo domingo","valparaiso","villa alemana","viña del mar"]
+     }
+]

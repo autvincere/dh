@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <style>
+     #map { 
+          border:1px solid black;
+          height: 400px;
+          width: 100%;
+          border-radius: 4px;
+     }
+     </style>
+</head>
+<body>
+          <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGI_jgIJQXJ-0dsWX-W8yindzXIcwO4fw&language=ee&dummy=dummy.js">
+        </script>
+     <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
+<div id="map"></div>
+<div id="app"></div>
+<div id="panel"></div>
+<div id="aviso"></div>
+<script>
+     let 
+          map
+     const
+          jsonRegiones = "regiones.json"
+          jsonLocales = "locales.json"
+          app = document.getElementById("app")
+          mapCanvas = document.getElementById("map-canvas")
+          panel = document.getElementById("panel")
+          buscador = document.getElementById('buscador')
+          btnBuscador = document.getElementById('btnBuscador')
+          aviso = document.getElementById('aviso')
+          markers = []
+          InforObj = []
+          chileCords = {
+                lng: -106.2422428448643,
+                lat: -35.4432056793914
+                
+          }
+
+          locales = [
+               {
+                    local:"rotonda arica",
+                    comuna: "arica",
+                    direccion: "Av. 18 de Septiembre 2501",
+                    LatLng: [{
+                         lng: -70.29295860000002,
+                        lat: -18.4880325,
+                        
+                    }],
+                    aperturaDiaHabil:"08:30",
+                    cierreDiaHabil:"22:30",
+                    aperturaSabado:"08:30",
+                    cierreSabado:"22:30",
+                    aperturaDomingo:"08:30",
+                    cierreDomingo:"22:30",
+                    aperturaViernes:"08:30",
+                    cierreViernes:"22:30"
+                },
+                {
+                    local:"Santa María Arica",
+                    comuna: "arica",
+                    direccion: "Av. 18 de Septiembre 2501",
+                    LatLng: [{
+                         lng: -70.30033919999994,
+                         lat: -18.465690855302896
+                    }],
+                    aperturaDiaHabil:"08:30",
+                    cierreDiaHabil:"22:30",
+                    aperturaSabado:"08:30",
+                    cierreSabado:"22:30",
+                    aperturaDomingo:"08:30",
+                    cierreDomingo:"22:30",
+                    aperturaViernes:"08:30",
+                    cierreViernes:"22:30"
+                },
+                {
+                    local:"Regimiento Arica",
+                    comuna: "arica",
+                    direccion: "Av. 18 de Septiembre 2501",
+                    LatLng: [{
+                        lng: -71.2788485,
+                        lat: -29.9502974
+                    }],
+                    aperturaDiaHabil:"08:30",
+                    cierreDiaHabil:"22:30",
+                    aperturaSabado:"08:30",
+                    cierreSabado:"22:30",
+                    aperturaDomingo:"08:30",
+                    cierreDomingo:"22:30",
+                    aperturaViernes:"08:30",
+                    cierreViernes:"22:30"
+                },
+                {
+                    local:"Iquique Centro",
+                    comuna: "arica",
+                    direccion: "Av. 18 de Septiembre 2501",
+                    LatLng: [{ 
+                        lng: -70.1492774,
+                        lat: -20.2138705
+                    }],
+                    aperturaDiaHabil:"08:30",
+                    cierreDiaHabil:"22:30",
+                    aperturaSabado:"08:30",
+                    cierreSabado:"22:30",
+                    aperturaDomingo:"08:30",
+                    cierreDomingo:"22:30",
+                    aperturaViernes:"08:30",
+                    cierreViernes:"22:30"
+                }
+            ]
+
+            window.onload = function () {
+                initMap();
+            }
+
+            //CARGA REGIONES
+            fetch(jsonRegiones)
+               .then(res => res.json())
+               .then(region =>
+               cargaSelect(region)
+               //   console.log(region)
+               )
+            .catch(err => console.log(err));
+
+               let  regionesRegistradas = reg => reg.nombreRegion
+                    comunasRegistradas = reg => reg.comunas
+                    templateElegirComuna = lugar => `<option value="${lugar}">${lugar}</option>`
+                    templateRegion = reg => `<option class="optionRegion" value="${reg.nombreRegion}">${reg.nombreRegion}</option> `
+                    // let templatePin = pin =>`<div id="siteNotice">${pin.local}</div> `
+                    panelTemplate = panel =>
+                         `
+                         <article>
+                         <h2>${panel.local}</h2>
+                              <span class="direccion">${panel.direccion}</span>
+                              <span class="horario uno">Lunes a Jueves: ${panel.aperturaDiaHabil} - ${panel.cierreDiaHabil}</span>
+                              <span class="horario dos">${panel.direccion}Viernes:  - </span>
+                              <span class="horario tres">${panel.direccion}Sábados: 8:30:00 - 22:00:00</span>
+                              <span class="horario cuatro">${panel.direccion}Domingos: 9:00:00 - 21:00:00</span>
+                         </article>
+                         `
+                    cargaSelect = (region) => {
+                    //console.log(region.length); 
+                         app.innerHTML =
+                         `
+                              <select id="regiones"> 
+                              <option value="" disabled selected>Region</option>
+                              ${region.map(templateRegion).join('')}
+                              </select>
+                              <select id="comunas"> 
+                              <option value="">Seleccione una Comuna...</option>
+                              </select>
+                              `
+
+                              function cargaComunas() {
+                              let padre = this.value
+                              // console.log(padre);
+                              let com = region.map(regionesRegistradas)
+                              // console.log(com);
+                              let indice = com.indexOf(padre);
+                              // console.log(indice);
+                              // Mostrar comuna es un array obtenido de un array de objetos
+                              let mostrarComuna = region.map(comunasRegistradas)[indice]
+                              
+                              console.log(mostrarComuna)
+                              //debugger
+                              
+                              selectComunas.innerHTML =
+                                   `<option value="">Seleccione una Comuna...</option>${mostrarComuna.map(templateElegirComuna).join(' ')}`;
+                              }
+
+                              let selectRegiones = document.getElementById("regiones");
+                              let selectComunas = document.getElementById("comunas");
+                              
+                              selectRegiones.addEventListener("change", cargaComunas, false);
+                              selectComunas.addEventListener("change", cargaUbicacion, false);
+                         }
+                    prueba =  (event) => {
+                                   event.preventDefault()
+                                   console.log('hice click')
+                                   map.setCenter(markers[1].getPosition())
+                                   google.maps.event.trigger(markers[1], 'click');
+                              }  
+                    cargaUbicacion = () => {
+                              let localCapturado = event.target.value
+                              console.log(` el local capturado es: ${localCapturado}`);
+
+                              //carga locales excel
+
+                              fetch(jsonLocales)
+                              .then(res => res.json())
+                              .then(locales =>
+                                   // console.log(locales)
+                                   cargaLocal(locales))
+                              .catch(err => console.log(err));
+
+                              function cargaLocal(locales) {
+                              let aprobados =
+                                   locales.filter(function (local) {
+                                   if (local.comuna == localCapturado) {
+                                        panel.innerHTML = ``
+                                        return true
+                                   } else {
+                                        console.log('no hay coincidencias');
+                                        return false
+                                   }
+                                   })
+                              console.log('los aprobados son: ')
+                              console.log(aprobados)
+                              markers.length = 0
+                              markers = [...aprobados]
+                              closeOtherInfo()     
+                              aprobados.map(addMarkerInfo)
+
+                                  
+                              // AGREGAR SIDEBAR CON PINES EXISTENTES
+                            
+
+                              panel.innerHTML = ``
+                              panel.innerHTML +=
+                              `
+                              <h2> ${markers.length}</h2>
+                              ${markers.map((mar) => 
+                                  `
+                                   <a href="#" style="display: block;"class="marker-link" onclick="prueba(event)">
+                                        <h2>${!mar.local ? `Local` : mar.local}</h2>
+                                        <p><b>Dirección:</b> ${mar.direccion}, <span class="text-capitalize">${mar.comuna}</span>.</p>
+                                        <p><b>Lunes a Jueves:</b> ${mar.aperturaDiaHabil} - ${mar.cierreDiaHabil}.</p>
+                                        <p><b>Viernes:</b> ${mar.aperturaViernes} - ${mar.cierreViernes}.</p>
+                                        <p><b>Sábados:</b> ${mar.aperturaSabado} - ${mar.cierreSabado}.</p>
+                                        <p><b>Domingos:</b> ${mar.aperturaDomingo} - ${mar.cierreDomingo}.</p>
+                                   </a>
+                                   `  
+                              ).join(' ')}`
+                                
+                              // function myClick(id){
+                              //      map.setCenter(markers[id].getPosition());
+                              //      google.maps.event.trigger(markers[id], 'click');
+                              //      } 
+                             }
+                         }  
+
+            function addMarkerInfo() {
+                for (let i = 0; i < locales.length; i++) {
+                    let contentString = `<div id="content"><h1> ${locales[i].local}
+                        </h1><p>Lorem ipsum dolor sit amet, vix mutat posse suscipit id, vel ea tantas omittam detraxit.</p></div>`
+
+                    const marker = new google.maps.Marker({
+                         // position: {
+                         //      lat: parseInt(locales[i].latitud[0]),
+                         //      lng: parseInt(locales[i].longitud[0])
+                         // },
+                        position: locales[i].LatLng[0],
+                        map: map,
+                        id: [i],
+                        animation: google.maps.Animation.DROP
+                    })
+
+                    const infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                        maxWidth: 200
+                    })
+
+                    marker.addListener('click', function () {
+                        closeOtherInfo()
+                        infowindow.open(marker.get('map'), marker)
+                        map.panTo(this.getPosition())
+                        map.setZoom(10)
+                        InforObj[0] = infowindow
+                    })
+                    // marker.addListener('mouseover', function () {
+                    //     closeOtherInfo();
+                    //     infowindow.open(marker.get('map'), marker);
+                    //     InforObj[0] = infowindow;
+                    // })
+                    // marker.addListener('mouseout', function () {
+                    //     closeOtherInfo();
+                    //     infowindow.close();
+                    //     InforObj[0] = infowindow;
+                    // })
+                    // const myClick = id => {
+                    //      map.setCenter(markers[id].getPosition());
+                    //      google.maps.event.trigger(markers[id], 'click');
+
+                    //      }
+                    // let templatePin = pin => `<div id="siteNotice">${!pin.local ? `Local` : pin.local}</div> `
+
+                    
+                   
+                }
+            }
+
+            function closeOtherInfo() {
+                if (InforObj.length > 0) {
+                    /* detach the info-window from the marker ... undocumented in the API docs */
+                    InforObj[0].set("marker", null);
+                    /* and close it */
+                    InforObj[0].close();
+                    /* blank the array */
+                    InforObj.length = 0;
+                }
+            }
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    scrollwheel: false,
+                    center: chileCords,
+                    mapTypeId: google.maps.MapTypeId.roadmap
+                });
+                addMarkerInfo();
+            }
+</script>
+</body>
+</html>
