@@ -5,8 +5,8 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>Index 2</title>
-     <style>
+     <title>Fallecidos</title>
+     <style type="text/css">
           body {
                padding: 0;
                margin: 0;
@@ -110,7 +110,7 @@
                               scaledSize: new google.maps.Size(50, 50)
                          },
                          type: "point",
-                         id: [i],
+                         id: locales[i].id,
                          animation: google.maps.Animation.DROP
                     })
                     // console.log(locales[i].latitud)
@@ -127,7 +127,7 @@
                               map.setCenter(marker.getPosition())
                          }
                     })(marker, i))
-
+                    
                     // panel.innerHTML = ``
                     panel.innerHTML +=
                          `
@@ -143,7 +143,9 @@
                                    ${ !locales[i].lugar ? "" : `<p><b>lugar:</b> ${locales[i].lugar}</p>`} 
                               </a>
                          `
+                   
                }
+               
           }
 
           let myClick = id => {
@@ -293,21 +295,8 @@
                          mapTypeId: google.maps.MapTypeId.roadmap
                     }
                map = new google.maps.Map(mapCanvas, mapOptions)
-               //   addMarker (currentPosition)
-               //console.log(currentPosition)
-               //   addMarker(currentPosition)
           }
-
-          // let initialize = () => {
-          //      if (navigator.geolocation) {
-          //           navigator.geolocation.getCurrentPosition(showPosition);
-          //      } else {
-          //           console.log('no llego');
-          //      }
-          //      addMarker(locations)
-          // }
-
-          
+   
            // SE CREAN TAGS POR CATEGORIA
            function tags(valor){
                //console.log(valor);
@@ -336,24 +325,25 @@
                          } else {console.log('no hay coincidencias con id del btn')}
                     })
                     console.log(datosSeleccionados)
-                    
+                    limpiarPins()
+                    addMarker(datosSeleccionados)
+
                     panel.innerHTML = ''
-                    panel.innerHTML += `a`
-                    // ${datosSeleccionados.map(dat => {
-                    //      `<a style="display: block;"class="marker-link" onclick="myClick(${markers.length -1});">
-                    //           <h2>${dat.nombre}</h2>
-                    //           ${ !dat.circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${dat.circunstanciaDeFallecimiento}</p>`}
+                    panel.innerHTML += `${datosSeleccionados.map(function(dat,i) {
+                         return `<a style="display: block;"class="marker-link" onclick="myClick(${i});">
+                               <h2>${dat.nombre}</h2>
+                               ${ !dat.circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${dat.circunstanciaDeFallecimiento}</p>`}
 
-                    //           ${ !dat.edad ? "" : `<p><b>edad:</b> ${dat.edad}</p>`}
+                               ${ !dat.edad ? "" : `<p><b>edad:</b> ${dat.edad}</p>`}
 
-                    //           ${ !dat.nacionalidad ? "" : `<p><b>nacionalidad:</b> ${dat.nacionalidad}</p>`}
+                               ${ !dat.nacionalidad ? "" : `<p><b>nacionalidad:</b> ${dat.nacionalidad}</p>`}
 
-                    //           ${ !dat.fecha ? "" : `<p><b>fecha:</b> ${dat.fecha}</p>`}
+                              ${ !dat.fecha ? "" : `<p><b>fecha:</b> ${dat.fecha}</p>`}
 
-                    //           ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
-                    //       </a>
-                    //      `})}
-                    // `
+                              ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
+                           </a>`
+                    })}`
+                   
                          }
 
           }
@@ -387,7 +377,7 @@
                                    /* Get worksheet */
                                    let
                                         worksheet = workbook.Sheets[first_sheet_name];
-                                   locales = XLSX.utils.sheet_to_json(worksheet, {
+                                        locales = XLSX.utils.sheet_to_json(worksheet, {
                                         raw: true
                                    })
 
