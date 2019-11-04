@@ -136,13 +136,13 @@
                                    ${ !locales[i].circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${locales[i].circunstanciaDeFallecimiento}</p>`}
                                    ${ !locales[i].edad ? "" : `<p><b>edad:</b> ${locales[i].edad}</p>`}
 
-                                   <p><b>Dirección:</b> ${locales[i].direccion}, <span class="text-capitalize">${locales[i].comuna}</span>.</p>
-                                   <p><b>Lunes a Jueves:</b> ${locales[i].aperturaDiaHabil} - ${locales[i].cierreDiaHabil}.</p>
-                                   <p><b>Viernes:</b> ${locales[i].aperturaViernes} - ${locales[i].cierreViernes}.</p>
-                                   <p><b>Sábados:</b> ${locales[i].aperturaSabado} - ${locales[i].cierreSabado}.</p>
-                                   <p><b>Domingos:</b> ${locales[i].aperturaDomingo} - ${locales[i].cierreDomingo}.</p>
+                                   ${ !locales[i].nacionalidad ? "" : `<p><b>nacionalidad:</b> ${locales[i].nacionalidad}</p>`}
+
+                                   ${ !locales[i].fecha ? "" : `<p><b>fecha:</b> ${locales[i].fecha}</p>`}
+
+                                   ${ !locales[i].lugar ? "" : `<p><b>lugar:</b> ${locales[i].lugar}</p>`} 
                               </a>
-                              `
+                         `
                }
           }
 
@@ -172,24 +172,27 @@
 
           let
                regionesRegistradas = reg => reg.nombreRegion
-          comunasRegistradas = reg => reg.comunas
-          templateElegirComuna = lugar => `<option value="${lugar}">${lugar}</option>`
-          templateRegion = reg =>
+               comunasRegistradas = reg => reg.comunas
+               templateElegirComuna = lugar => `<option value="${lugar}">${lugar}</option>`
+               templateRegion = reg =>
                `<option class="optionRegion" value="${reg.nombreRegion}">${reg.nombreRegion}</option> `
-          // let templatePin = pin =>`<div id="siteNotice">${pin.nombre}</div> `
+          //   let templatePin = pin =>`<div id="siteNotice">${pin.nombre}</div> `
 
-          panelTemplate = panel =>
+               panelTemplate = locales =>
                `
-                         <article>
-                         <h2>${panel.nombre}</h2>
-                              <span class="direccion">${panel.direccion}</span>
-                              <span class="horario uno">Lunes a Jueves: ${panel.aperturaDiaHabil} - ${panel.cierreDiaHabil}</span>
-                              <span class="horario dos">${panel.direccion}Viernes:  - </span>
-                              <span class="horario tres">${panel.direccion}Sábados: 8:30:00 - 22:00:00</span>
-                              <span class="horario cuatro">${panel.direccion}Domingos: 9:00:00 - 21:00:00</span>
-                         </article>
+               <a style="display: block;"class="marker-link" onclick="myClick(${markers.length -1});">
+                                   <h2>${locales[i].nombre}</h2>
+                                   ${ !locales[i].circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${locales[i].circunstanciaDeFallecimiento}</p>`}
+                                   ${ !locales[i].edad ? "" : `<p><b>edad:</b> ${locales[i].edad}</p>`}
+
+                                   ${ !locales[i].nacionalidad ? "" : `<p><b>nacionalidad:</b> ${locales[i].nacionalidad}</p>`}
+
+                                   ${ !locales[i].fecha ? "" : `<p><b>fecha:</b> ${locales[i].fecha}</p>`}
+
+                                   ${ !locales[i].lugar ? "" : `<p><b>lugar:</b> ${locales[i].lugar}</p>`} 
+                              </a>
                          `
-          cargaSelect = (region) => {
+               cargaSelect = (region) => {
                //console.log(region.length); 
                app.innerHTML =
                     `
@@ -303,13 +306,14 @@
           //      }
           //      addMarker(locations)
           // }
+
+          
            // SE CREAN TAGS POR CATEGORIA
            function tags(valor){
                //console.log(valor);
                const noRepetidas= [... new Set(valor.map(x => x.circunstanciaDeFallecimiento))];
                console.log(noRepetidas.indexOf('-'))
                barra.innerHTML = ''
-    
                barra.innerHTML +=
                `
                ${noRepetidas.map(cat => cat.indexOf('-') == -1
@@ -317,6 +321,40 @@
                                    : `<a class="categorias btn btn-default" id="${cat}">${cat.split('-').join(' ')}</a>`
                                    ).join(' ')}
                `
+               let categorias = document.getElementsByClassName('categorias')
+               
+               for (i = 0; i < categorias.length; i++) {
+                    categorias[i].addEventListener("click", getProduct,false);
+                    }
+               function getProduct(e){
+                    let elementoClikeado = e.target.getAttribute('id')
+                    console.log(elementoClikeado)
+
+                    datosSeleccionados = valor.filter( (catSeleccionada) => {
+                         if(catSeleccionada.circunstanciaDeFallecimiento == elementoClikeado){
+                              return true
+                         } else {console.log('no hay coincidencias con id del btn')}
+                    })
+                    console.log(datosSeleccionados)
+                    
+                    panel.innerHTML = ''
+                    panel.innerHTML += `a`
+                    // ${datosSeleccionados.map(dat => {
+                    //      `<a style="display: block;"class="marker-link" onclick="myClick(${markers.length -1});">
+                    //           <h2>${dat.nombre}</h2>
+                    //           ${ !dat.circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${dat.circunstanciaDeFallecimiento}</p>`}
+
+                    //           ${ !dat.edad ? "" : `<p><b>edad:</b> ${dat.edad}</p>`}
+
+                    //           ${ !dat.nacionalidad ? "" : `<p><b>nacionalidad:</b> ${dat.nacionalidad}</p>`}
+
+                    //           ${ !dat.fecha ? "" : `<p><b>fecha:</b> ${dat.fecha}</p>`}
+
+                    //           ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
+                    //       </a>
+                    //      `})}
+                    // `
+                         }
 
           }
           //CIERRE SE CREAN TAGS POR CATEGORIA
