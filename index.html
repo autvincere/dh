@@ -69,7 +69,6 @@
      <div id="panel"></div>
      <script>
           let
-          jsonRegiones = "regiones.json"
           jsonLocales = "locales.xls"
           mapCanvas = document.getElementById("map")
           panel = document.getElementById("panel")
@@ -162,124 +161,6 @@
                panel.innerHTML = ``
           }
          
-
-          // CARGA REGIONES //////++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-          fetch(jsonRegiones)
-               .then(res => res.json())
-               .then(region =>
-                    cargaSelect(region)
-                    //   console.log(region)
-               )
-               .catch(err => console.log(err))
-
-          let
-               regionesRegistradas = reg => reg.nombreRegion
-               comunasRegistradas = reg => reg.comunas
-               templateElegirComuna = lugar => `<option value="${lugar}">${lugar}</option>`
-               templateRegion = reg =>
-               `<option class="optionRegion" value="${reg.nombreRegion}">${reg.nombreRegion}</option> `
-          //   let templatePin = pin =>`<div id="siteNotice">${pin.nombre}</div> `
-
-               panelTemplate = locales =>
-               `
-               <a style="display: block;"class="marker-link" onclick="myClick(${markers.length -1});">
-                                   <h2>${locales[i].nombre}</h2>
-                                   ${ !locales[i].circunstanciaDeFallecimiento ? "" : `<p><b>Circunstancias:</b> ${locales[i].circunstanciaDeFallecimiento}</p>`}
-                                   ${ !locales[i].edad ? "" : `<p><b>edad:</b> ${locales[i].edad}</p>`}
-
-                                   ${ !locales[i].nacionalidad ? "" : `<p><b>nacionalidad:</b> ${locales[i].nacionalidad}</p>`}
-
-                                   ${ !locales[i].fecha ? "" : `<p><b>fecha:</b> ${locales[i].fecha}</p>`}
-
-                                   ${ !locales[i].lugar ? "" : `<p><b>lugar:</b> ${locales[i].lugar}</p>`} 
-                              </a>
-                         `
-               cargaSelect = (region) => {
-               //console.log(region.length); 
-               app.innerHTML =
-                    `
-                              <select id="regiones"> 
-                              <option value="" disabled selected>Region</option>
-                              ${region.map(templateRegion).join('')}
-                              </select>
-                              <select id="comunas"> 
-                              <option value="">Seleccione una Comuna...</option>
-                              </select>
-                              `
-
-               function cargaComunas() {
-                    let padre = this.value
-                    // console.log(padre);
-                    let com = region.map(regionesRegistradas)
-                    // console.log(com);
-                    let indice = com.indexOf(padre);
-                    // console.log(indice);
-                    // Mostrar comuna es un array obtenido de un array de objetos
-                    let mostrarComuna = region.map(comunasRegistradas)[indice]
-
-                    console.log(mostrarComuna)
-                    //debugger
-
-                    selectComunas.innerHTML =
-                         `<option value="">Seleccione una Comuna...</option>${mostrarComuna.map(templateElegirComuna).join(' ')}`;
-               }
-
-               let selectRegiones = document.getElementById("regiones")
-               let selectComunas = document.getElementById("comunas")
-
-               selectRegiones.addEventListener("change", cargaComunas, false)
-               selectComunas.addEventListener("change", cargaUbicacion, false)
-          }
-
-
-          let cargaUbicacion = () => {
-               let localCapturado = event.target.value
-
-               fetch(jsonLocales)
-                    .then(
-                         fail = (res) => {
-                              /* get the data as a Blob */
-                              if (!res.ok) throw new Error("fetch failed");
-                              return res.arrayBuffer();
-                         }
-                    )
-                    .then(
-                         load = (ab) => {
-                              /* parse the data when it is received */
-                              let data = new Uint8Array(ab);
-                              let workbook = XLSX.read(data, {
-                                   type: "array"
-                              });
-
-                              /* DO SOMETHING WITH workbook HERE */
-                              let first_sheet_name = workbook.SheetNames[0];
-                              /* Get worksheet */
-                              let worksheet = workbook.Sheets[first_sheet_name];
-                              locales = XLSX.utils.sheet_to_json(worksheet, {
-                                   raw: true
-                              })
-                              cargaLocal(locales), console.log(locales)
-
-                         }
-                    )
-
-               function cargaLocal(locales) {
-                    let aprobados =
-                         locales.filter(function (local) {
-                              if (local.comuna == localCapturado) {
-                                   panel.innerHTML = ``
-                                   return true
-                              } else {
-                                   // console.log('no hay coincidencias')
-                                   return false
-                              }
-                         })
-                    console.log('los aprobados son: ')
-                    console.log(aprobados)
-                    limpiarPins()
-                    addMarker(aprobados)
-               }
-          }
           let showPosition = position => {
                let
                     currentPosition = {
@@ -342,7 +223,7 @@
 
                               ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
                            </a>`
-                    })}`
+                    }).join(' ')}`
                    
                          }
 
