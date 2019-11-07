@@ -7,6 +7,7 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Fallecidos</title>
      <style type="text/css">
+          @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap');
           @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
           * {
                /* margin: 0;
@@ -20,8 +21,10 @@
                padding: 0;
                margin: 0;
           }
-          h1{
+          h1{             
                text-align: center;
+               font-weight: 300;
+               margin-bottom: -3px;
           }
 		h3{
                font-family: 'Roboto', Helvetica, sans-serif;
@@ -32,6 +35,23 @@
                text-transform: capitalize;
                font-weight: 500;
           }
+          hr{
+               padding: 0px;
+               width: 30%;
+               margin: 0 auto;
+               margin-bottom: 19px;
+             }
+          .cont{
+
+          }
+          .number{
+               color: #c03535;
+               font-size: 2em;
+               font-weight: 600;
+               vertical-align: middle;
+               font-family: 'Roboto Condensed', Helvetica, sans-serif;
+          }
+          br.hide-desktop{display: none;}
 		.image-100{
 			width: 100%;
 		}
@@ -176,51 +196,85 @@
                position: relative;
           }
           @media (min-width: 0px) and (max-width: 480px) {
+               .cont{
+               display: flex;
+               flex-direction: column-reverse;
+          }
                aside{
                     display: inline-block;
                     width: 100%;
                     text-align: center;
                     vertical-align: top;
+                    margin-left: 6px;
 		     }
                section{
                     width: 100vw;
+               }
+               .number {
+               font-size: 1.6em;
                }
                .marker-link{
                    
                     
                }
+               br.hide-desktop{
+                    /* display: block; */
+                    }
                .content-btn{
-                    display: inline-block;
-                    width: 46%;
+                    /* display: inline-block;
+                    width: 46%; */
                     vertical-align: middle;
-                    height: 328px;
-                    border: 1px solid #8e2422;
+                    /* height: 328px; */
+                    height: 228px;
+                    /* border: 1px solid #8e2422; */
+                    border-bottom: 1px solid gray;
                     margin: 7px 3px;
                     border-radius: 8px;
+               }
+         
+               h1{
+                    margin-bottom: 0px;
+                    margin-top: 9px;
+                    font-size: 1.5em
                }
                h2{
                     font-size: 1.4em;
                     font-weight: 500;
                }
-               /* section{
-                    width: 100vW;
-                    text-align: center;
-                    height: 68vh;
-               } */
+             hr{
+               padding: 0px;
+               width: 80%;
+               margin: 0 auto;
+               margin-bottom: 12px;
+             }
                .archive-map {
                     width: 100vw;
-                    height: 68vh;
+                    height: 65vh;
                }
                .btn{
                     position: absolute;
                     bottom: 3px;
-                    left: 10%;
+                    /* left: 10%; */
+                    left: 30%;
+               }
+               .btn-categorias{
+                    margin-top: 9px;
+                    margin-bottom: 0px;
+                    width: 30%;
+                    vertical-align: text-top;
+                    height: 95px; 
                }
                #panel{
                     /* overflow-y: inherit; */
                     width: 100vw;
-                    height: auto;
+                    height: 50vh;
                     
+               }
+               #panel::-webkit-scrollbar {
+               height: 38px;
+		}
+               div#cat{
+                    margin: 0px 0px;
                }
           }
 
@@ -244,15 +298,18 @@
 
      <div class="container">
                <div id="cantidad"></div>
-          <aside>
-               <div id="app"></div>
-               <div id="cat"></div>
-               <div id="panel"></div>
-          </aside>
+               <hr>
+               <div class="cont">
+                    <aside>
+                         <!-- <div id="app"></div> -->
+                         <div id="cat"></div>
+                         <div id="panel"></div>
+                    </aside>
 
-          <section>
-               <div id="map" class="archive-map"></div>
-          </section>
+                    <section>
+                         <div id="map" class="archive-map"></div>
+                    </section>
+               </div>
      </div>
 
      <script>
@@ -281,7 +338,7 @@
           
 
           let numero = (locales) => {
-               cantidad.innerHTML =`<h1>Número de Fallecidos: ${locales.length}</h1>`
+               cantidad.innerHTML =`<h1>Nº de Fallecidos: <br class="hide-desktop"><span class="number">${locales.length}</span></h1>`
           }
 
           let addMarker = (locales) => {
@@ -340,7 +397,7 @@
 
                                    ${ !locales[i].lugar ? "" : `<p><b>lugar:</b> ${locales[i].lugar}</p>`} 
                               </a>
-                              <a class="btn" onclick="myClick(${markers.length -1});">Ver mapa ></a>
+                              <a class="btn" onclick="myClick(${markers.length -1});">Ver en mapa ></a>
                          <div>
                          `
                    
