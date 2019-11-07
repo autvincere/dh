@@ -55,11 +55,39 @@
 		.image-100{
 			width: 100%;
 		}
-          /* .container {
-               width: 100%;
-               height: 100%;
-          } */
-
+          .arrow{
+                    display: inline-block;
+                    font-size: 2em;
+                    vertical-align: middle;
+                    margin-left: 9px;
+                    margin-top: -4px;
+               }
+          .title {
+               padding: 4px 0px;
+          }
+          .title .parche {
+               position: relative;
+               text-align: center;
+               display: -webkit-box;
+          }
+          .title .parche::before {
+               content: "";
+               position: absolute;
+               right: 2%;
+               height: 5px;
+               border-bottom: 3px solid #bf3534;
+               top: 18px;
+               width: 11%;
+          }
+          .title .parche::after {
+               content: "";
+               position: absolute;
+               left: 2%;
+               height: 5px;
+               border-bottom: 3px solid #bf3534;
+               top: 18px;
+               width: 11%;
+          }
           .archive-map {
                width: auto;
                height: 100vh;
@@ -197,8 +225,8 @@
           }
           @media (min-width: 0px) and (max-width: 480px) {
                .cont{
-               display: flex;
-               flex-direction: column-reverse;
+                    display: flex;
+                    flex-direction: column-reverse;
           }
                aside{
                     display: inline-block;
@@ -210,6 +238,10 @@
                section{
                     width: 100vw;
                }
+               .arrow{
+               display: block;
+               font-size: 2em; 
+          }
                .number {
                font-size: 1.6em;
                }
@@ -233,8 +265,7 @@
                }
          
                h1{
-                    margin-bottom: 0px;
-                    margin-top: 9px;
+                    margin: 0px auto;
                     font-size: 1.5em
                }
                h2{
@@ -262,7 +293,7 @@
                     margin-bottom: 0px;
                     width: 30%;
                     vertical-align: text-top;
-                    height: 95px; 
+                    height: 122px; 
                }
                #panel{
                     /* overflow-y: inherit; */
@@ -297,8 +328,12 @@
      <script src="assets/js/xlsx.full.min.js"></script>
 
      <div class="container">
+               <div class="title">
+                         <div id="cantidad" class="parche"></div>
+                     </div>
+
                <div id="cantidad"></div>
-               <hr>
+               <!-- <hr> -->
                <div class="cont">
                     <aside>
                          <!-- <div id="app"></div> -->
@@ -445,8 +480,8 @@
                barra.innerHTML +=
                `
                ${noRepetidas.map(cat => cat.indexOf('-') == -1
-                                   ? `<a class="btn-categorias" id="${cat}">${cat.split('-').join(' ')}</a>`
-                                   : `<a class="btn-categorias" id="${cat}">${cat.split('-').join(' ')}</a>`
+                                   ? `<a class="btn-categorias" id="${cat}">${cat.split('-').join(' ')}<span class="arrow"> ></span></a>`
+                                   : ``
                                    ).join(' ')}
                `
                let categorias = document.getElementsByClassName('btn-categorias')
