@@ -361,6 +361,17 @@
                     <aside>
                          <!-- <div id="app"></div> -->
                          <div id="cat"></div>
+                         <div id="control">
+                              <article>
+                                   <h3>32 fallecidos</h3>
+                              </article>
+                              <div class="vertical-line"></div>
+                              <ul id="social">
+                                   <li>
+                                        <img src="" alt="">
+                                   </li>
+                              </ul>
+                         </div>
                          <div id="panel"></div>
                     </aside>
 
@@ -375,6 +386,7 @@
           jsonLocales = "locales.xls"
           mapCanvas = document.getElementById("map")
           panel = document.getElementById("panel")
+          panel = document.getElementById("control")
           cat = document.getElementById("cat")
           cantidad = document.getElementById("cantidad")
 
@@ -394,7 +406,6 @@
           cat.appendChild(barraTags)
           barra = document.getElementById('cajabotones')
           
-
           let numero = (locales) => {
                cantidad.innerHTML =`<h1>Nº de Fallecidos: <br class="hide-desktop"><span class="number">${locales.length}</span></h1>`
           }
@@ -466,6 +477,8 @@
           let myClick = id => {
                map.setCenter(markers[id].getPosition())
                google.maps.event.trigger(markers[id], 'click')
+               panel.innerHTML =''
+               panel.innerHTML +=``
                console.log('hice click')
           }
 
@@ -536,9 +549,9 @@
 
                                ${ !dat.nacionalidad ? "" : `<p><b>nacionalidad:</b> ${dat.nacionalidad}</p>`}
 
-                              ${ !dat.fecha ? "" : `<p><b>fecha:</b> ${dat.fecha}</p>`}
+                               ${ !dat.fecha ? "" : `<p><b>fecha:</b> ${dat.fecha}</p>`}
 
-                              ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
+                               ${ !dat.lugar ? "" : `<p><b>lugar:</b> ${dat.lugar}</p>`} 
                            </a>`
                     }).join(' ')}`
                    
