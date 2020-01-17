@@ -1,0 +1,50 @@
+// SECCION OFERTAS *******************************************************************
+//***********************************************************************************
+
+section#ofertas{
+     article{
+          &#filter{
+            padding: 24px 0px;   
+          }
+         &#cards{
+             ul{
+                 li{
+                     margin: 0px 8px 8px 8px;
+                 }
+             }
+         }
+         &#indice{
+             ul{
+                 li{
+                     display: inline-block;
+                     @include pastilla(transparent, gray, gray, 50px, 0px 0px,0.8em,red);
+                     margin: 8px;
+                     width: 30px;
+                     height: 30px;
+                     a{
+                         vertical-align: -webkit-baseline-middle;
+                     }
+                 }
+             }
+         }
+         ul{
+             margin: 0 auto;
+             text-align: center;
+             li{             
+                 display: inline-block;
+                 /* width: 30%; */
+                 text-align: center;
+                 vertical-align: top;
+                 /* max-width: 100px; */
+                 a{
+ 
+                 }
+             }
+         }
+     }
+ }
+ 
+ 
+ 
+ // CIERRE SECCION OFERTAS *******************************************************************
+ //***********************************************************************************

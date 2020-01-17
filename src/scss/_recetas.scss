@@ -1,0 +1,164 @@
+#sliders {
+  // &:first-child {
+  //   margin-right: 9px;
+  // }
+  .slider {
+    @include inline-percent(49%, center, top);
+    margin-bottom: 30px;
+    &:last-child {
+      margin-left: 19px;
+    }
+
+    @include media(xs) {
+      @include mobile;
+    }
+
+    .flexslider-container {
+
+      .flexslider {
+
+        .flex-control-nav { 
+          // bottom: -26px;
+          position: initial;
+          li { 
+        
+            .flex-active { 
+              background-color: $color-rojo-unimarc;
+            }
+            a{
+             
+              border-radius: 50px;
+              width: 16px;
+              height: 16px;
+              border: 2px solid $color-amarillo;
+              background-color: white;
+              box-shadow: inset 0 0 3px rgba(0, 0, 0, 0)
+            }
+          }
+        }
+
+        .flex-viewport {
+
+          .slides {
+
+            li {
+
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#recetas {
+
+  figure {
+
+    .image-100 {}
+  }
+
+  #search {
+    padding: 28px;
+
+    .input-icon-wrap {
+      max-width: 512px;
+      margin: 0 auto;
+      overflow: initial;
+      min-width: 230px;
+
+      input {
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+
+      .btn-input {
+        width: 54px;
+        font-size: 1.7em;
+        border: transparent;
+        background-color: $color-rojo;
+        border: 4px solid $color-amarillo;
+        cursor: pointer;
+        border-radius: 70px;
+        height: 54px;
+        margin: -6px 0 0 -14px;
+      }
+    }
+  }
+
+  h2 {
+    max-width: 525px;
+    color: $gray;
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 30px;
+  }
+
+  .line {
+    height: 1px;
+    background-color: $font-footer;
+    margin-bottom: 30px;
+  }
+
+  
+
+  #nuestras { 
+
+    ul { 
+  
+      li { 
+        @include media(xs) {
+          margin: 20px 0px;
+        }
+        a { 
+  
+          img { 
+            width: 100%;
+            max-width: 200px;
+          }
+  
+          p { 
+  
+          }
+        }
+      }
+    }
+  }
+
+  #tipos { 
+
+    ul { 
+  
+      li { 
+        @include media(xs) {
+          margin: 18px 0px;
+        }
+        
+        a { 
+  
+          img { 
+            width: 100%;
+            max-width: 100px;
+            @include media(xs) {
+              max-width: 200px;
+            }
+          }
+  
+          p { 
+  
+          }
+        }
+      }
+    }
+  }
+
+}

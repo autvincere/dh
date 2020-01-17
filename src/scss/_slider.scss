@@ -1,0 +1,156 @@
+/*-- Slideshow container --*/
+.slideshow-ctn {
+     // width: 100%;
+     // position: relative;
+     // margin: auto;
+     // border: 1px solid #7d97ad;
+     
+   }
+   .center {
+     margin: 0px auto;
+     text-align: center;
+   }
+   .my-slides {
+     display: none;
+   }
+   
+   .slide-img {
+     vertical-align: middle;
+     max-width: 400px;
+     width: 70%;
+     max-height: 266px;
+     text-align: center;
+     padding: 0.5em;
+     background-color: white;
+   }
+   
+   /*-- The dots/buttons/indocators --*/
+   .dot-ctn {
+     position: relative;
+     bottom: 27px;
+     padding-left: 20px;
+     text-align: center;
+    //  seleccionar cualqueir etiqueta de hijo
+      & *{
+        display: inline-block;
+      }
+   }
+   
+   .dot {
+     height: 17px;
+     width: 17px;
+     margin: 0 2px;
+     background-color: #ffffff;
+     border-radius: 50%;
+     display: inline-block;
+     border: 2px solid $color-amarillo;
+     cursor: pointer;
+     transition: background-color 0.6s ease;
+   }
+   :focus {
+       outline: none;
+   }
+   
+   .active {
+     background-color: $color-rojo;
+   }
+   
+   /*--  Fading animation --*/
+   .fade {
+     animation-name: fade;
+     animation-duration: 1.5s;
+   }
+   
+   @-webkit-keyframes fade {
+     from { opacity: 0 }
+     to { opacity: 1 }
+   }
+
+   @keyframes fade {
+     from { opacity: 0 }
+     to { opacity: 1 }
+   }
+   
+   /*-- Featured Work --*/
+   .middle-title {
+     color: #7d97ad;
+   }
+
+   .featured-work {
+     margin: 0;
+     padding: 0;
+   }
+
+   .project-ctn {
+     grid-template-columns: repeat(2, 1fr);
+     max-width: 1000px;
+     display: grid;
+     margin: 0;
+     padding: 0;
+     list-style: outside none none;
+     grid-gap: 0.3em;
+   }
+   .project-list {
+     border: 1px solid #ccc;
+     margin: 0;
+     text-align: center;
+     line-height: 1em;
+     text-decoration: none;
+   }
+   .project-img {
+     max-width: 400px;
+     width: 100%;
+     padding: 0.5em;
+   }
+   .project-name {
+     font-family: 'Nanum Pen Script', cursive;
+     font-size: 1.3em;
+     color: black;
+   }
+   .project-link {
+     position: relative;
+     bottom: 0;
+     font-size: 1em;
+     color: #2d3c49;
+   }
+   a {
+     text-decoration: none currentcolor solid;
+     color: orange;
+   }
+   
+   /*-- On smaller screens, decrease text size --*/
+   
+   @media only screen and (min-width: 0) and (max-width: 640px){
+     // .slideshow-ctn {
+     //   text-align: center;
+     // }
+   }
+   
+   @media only screen and (min-width: 641px) {
+     .side-div {
+       float: right;
+       width: calc(100% - 400px);
+     }
+     .big-title {
+       padding-top: 6vh;
+       font-size: 2em;
+       line-height: 1em;
+     }
+     .text {
+       font-size: 1.3em;
+       line-height: 1em;
+     }
+     .slideshow-ctn {
+     //   padding-left: 5vw;
+     //   padding-right: 4vw;
+     //   padding-bottom: 1vh;
+     }
+     .project-ctn {
+     grid-template-columns: repeat(3, 1fr);
+   }
+   }
+   @media only screen and (min-width: 765px) {
+     .big-title {
+       font-size: 3em;
+     }
+   }

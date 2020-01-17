@@ -1,0 +1,95 @@
+/**
+  **ESTILOS LOCALES GOOGLE MAPS
+**/
+
+#locales {
+  #map-canvas {
+    @include inline-percent(70%, right, top);
+    height: 100vh;
+
+    @include media(xs) {
+      @include mobile;
+    }
+  }
+
+  aside {
+    @include inline-percent(29%, left, top);
+    margin-right: -4px;
+    @include media(xs) {
+      @include mobile;
+    }
+    h3{
+      padding: 30px 0px;
+    }
+    article{
+      padding: 0px 20px;
+    .input-icon-wrap{
+      border: 1px solid gray;
+      height: 36px;
+      input{
+        height: 36px;
+      }
+      span {
+        width: 50px;
+        font-size: 1.7em;
+        border: transparent;
+        background-color: transparent;
+        cursor: pointer;
+        position: relative;
+
+        &::before {
+            color: gray;
+            font-weight: 600;
+            position: absolute;
+            top: 5px;
+            left: 12px;
+        }
+    }
+    }
+  }
+    #app{
+      margin-top: 15px;
+      &>* {
+        margin-bottom: 20px;
+      }
+      select{
+        display: block;
+        background: transparent;
+        border: 1px solid #dadada;
+        font-size: 14px;
+        height: 40px;
+        padding: 5px;
+        width: 100%;
+        &:focus{ outline: none;}
+      } 
+    }
+    #panel {
+      a {
+        display: block;
+        text-align: left;
+        margin-bottom: 30px;
+        position: relative;
+      h2 {
+        text-transform: capitalize;
+        margin-bottom: 5px;
+      }
+
+      p {
+        margin-top: 3px;
+      }
+      &:after{
+        content:"";
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+        right: 0;
+        border-top: 1px solid darkgrey;
+      }
+    }
+    }
+  }
+}
+
+/**
+  ** CIERRE ESTILOS LOCALES GOOGLE MAPS
+**/

@@ -1,0 +1,112 @@
+footer {
+     padding: 38px 0px 0px 0px;
+     color: $font-footer;
+     a{
+         color: $font-footer;
+     }
+     b {
+         color: white;
+     }
+ 
+   
+ 
+ 
+     h3 {
+         font-size: 1.3em;
+         margin-bottom: 20px;
+         @include media(xs) {
+             text-align: center;
+         }
+     }
+ 
+     p {
+         text-align: left;
+         font-size: 1em;
+         margin-bottom: 10px;
+ 
+         @include media(xs) {
+             text-align: center;
+         }
+     }
+ 
+     ul {
+         @include media(xs) {
+             padding: 0px 18px;
+         }
+         li {
+             margin-bottom: 5px;
+             @include media(xs) {
+                 text-align: center;
+             }
+             a {
+                 img.logo {
+                     width: 160px;
+                 }
+             }
+         }
+ 
+         &.social-bar {
+             justify-content: left;
+             padding: 10px 0px;
+             margin-top: 16px;
+             @include media(xs) {
+                 justify-content: center;
+             }
+             li {
+                 margin-right: 6px;
+                 a {
+                     i {
+                         color: white;
+ 
+                         &::before {
+                             border: 1px solid white;
+                             padding: 4px;
+                             border-radius: 6px;
+                         }
+                     }
+                 }
+                 &:last-child {
+                     margin-right: 0px;
+                 }
+             }
+         }
+     }
+     #gobierno.align-horizontal { 
+         padding: 22px 0px;
+         .logo { 
+             max-width: 100px;
+                 margin-right: 18px;
+                 @include media(xs) {
+                     margin-right: 0px;
+                 }
+         }
+     
+         p { 
+             font-size: 1.3em;
+             color: white;
+             font-weight: 600;
+             @include media(xs) {
+                 text-align: center;
+                 padding: 6px 0px;
+             }
+         }
+     }
+    //  @include media(doblefull) {
+    //       position: fixed;
+    //       bottom: 0;
+    //       clear: both;
+    //       width: 100%;
+    //   }
+    //  @include media(full) {
+    //       position: fixed;
+    //       bottom: 0;
+    //       clear: both;
+    //       width: 100%;
+    //   }
+    //  @include media(lg) {
+    //       position: fixed;
+    //       bottom: 0;
+    //       clear: both;
+    //       width: 100%;
+    //   }
+ }

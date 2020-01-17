@@ -1,0 +1,1017 @@
+/*
+Theme Name: Unimarc
+Theme URI: https://www.unimarc.cl/
+Author: Eduardo palma L.
+Author URI: http://prolamyr.cl
+Description: Tema Diseñado por Sebastian San Martin y Desarrollado por Eduardo Palma López
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: Unimarc
+*/
+@import "variables";
+@import 'fonts';
+@import 'queries';
+@import 'flex';
+@import 'utilidades';
+@import "intro";
+
+// ESTILOS GENERALES *******************************************************************
+//***********************************************************************************
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+h2 {
+    font-size: 1.3em;
+    font-weight: 100;
+}
+
+h3 {}
+
+h4 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 14px;
+    color: gray;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+// ESTILOS REUTILIZABLES *******************************************************************
+//***********************************************************************************
+.center-grilla {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include media(lg) {
+        width: 1200px;
+    }
+
+    @include media(full) {
+        width: 1200px;
+    }
+
+    @include media(doblefull) {
+        width: 1200px;
+    }
+
+    //    overflow: hidden;
+}
+.fullHeight{
+    height: 100vh;
+}
+.fullBkg{
+    @include backgroundImg--full($imagen-intro);
+}
+.logo{
+    position: absolute;
+    top: 14px;
+    left: 14px;
+}
+.logo_header--size{
+    max-width: 114px;
+    width: 100%;
+}
+.font-special-elite{
+    font-family: 'Special Elite', Helvetica, Arial, sans-serif; 
+}
+.font-open-sans-condensed{
+    font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif; 
+}
+.color-font-white{
+    color: #ffffff;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+.text-align-right{
+    text-align: right;
+}
+.icon-footer {
+    vertical-align: unset;
+    margin-left: 9px;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: none;
+
+    @include media(xs) {
+        display: inline-block;
+    }
+}
+
+.point-list {
+    display: block;
+
+    @include media(xs) {
+        display: none;
+    }
+}
+
+.rotate {
+    transform: rotate(178deg)
+}
+
+.btn-slider-rectangle {
+    width: 36px;
+    height: 6px;
+    display: block;
+    background: #666;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-indent: -9999px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn-slider-circle {
+    border-radius: 50px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid $color-amarillo;
+    background-color: white;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0)
+}
+
+.margin-botom-30 {
+    margin-bottom: 30px;
+}
+
+.margin-botom-20 {
+    margin-bottom: 20px !important;
+}
+
+.margin-bottom-17 {
+    margin-bottom: 17px;
+}
+
+.image-100 {
+    width: 100%;
+}
+
+.percent-100 {
+    width: 100%;
+}
+
+.percent-80 {
+    width: 80%;
+}
+
+.bkg-gray {
+    background-color: $gray;
+}
+
+.bkg-black {
+    background-color: black;
+}
+
+.bkg-footer {
+    background-color: $bkg-footer;
+}
+
+.center-element {
+    margin: 0 auto;
+    display: block;
+}
+
+.typo-white {
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-capitalize {
+    text-transform: capitalize
+}
+
+.show {
+    display: block !important;
+}
+
+.card {
+    overflow: hidden;
+    max-width: 200px;
+    padding: 6px;
+    border: 1px solid #e4e4e4;
+    padding: 11px 8px;
+    box-shadow: 5px 3px 9px 0px rgba(0, 0, 0, 0.1);
+
+    img {
+        &.header {
+            max-width: 180px;
+        }
+
+        &.thumb-slider {
+            max-width: 150px;
+        }
+    }
+
+    .cont-precio {
+        text-align: center;
+        background-color: $color-rojo;
+        font-size: 1.5em;
+        color: white;
+
+        span {
+            display: inline-block;
+            font-size: 0.8em;
+            vertical-align: text-top;
+        }
+
+        h3 {
+            display: inline-block;
+
+        }
+    }
+
+    .desc-precio {
+        text-align: left;
+        color: $color-negro-unimarc;
+
+        & * {
+            padding: 3px 0px;
+        }
+
+        h2 {
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        p {
+            color: $color-negro-unimarc;
+
+            &:first-of-type {
+                border-bottom: 2px solid $verde-unimarc;
+                padding: 0 0 5px 0;
+            }
+        }
+
+        h5 {}
+    }
+}
+
+.input-icon-wrap {
+    overflow: overlay;
+    display: flex;
+    flex-direction: row;
+    border-radius: 11px;
+
+    input {
+        height: 44px;
+        width: 60%;
+        padding: 2px 9px;
+        border: none;
+        flex: 1;
+        @include reset-input;
+    }
+
+    button {
+        width: 50px;
+        font-size: 1.7em;
+        border: transparent;
+        background-color: $verde-unimarc;
+        cursor: pointer;
+
+        &::before {
+            color: white;
+            font-weight: 600;
+        }
+    }
+}
+
+.thumb-slider {
+    border-radius: 41px;
+}
+
+.desc-carrusel {
+    font-size: 0.9em;
+    color: #909090;
+    font-weight: 400;
+    margin-top: 4px;
+    max-width: 150px;
+    line-height: 16px;
+    margin: 10px 0px;
+}
+
+.btn-carrusel {
+    @include button($color-rojo, #ffffff, transparent, 130px, 3.3px 3px);
+}
+
+.border-radius-recetas {
+    border-radius: 25%;
+}
+
+.hide {
+    @include media(xs) {
+        display: none;
+    }
+}
+
+.pastilla {
+    @include pastilla(transparent, gray, gray, 153px, 3px 18px, 0.8em, red);
+}
+
+.active-pastilla {
+    background-color: $verde-unimarc !important;
+    color: white !important;
+}
+
+.card-ofertas {}
+
+.enabled {
+    opacity: 1 !important;
+}
+
+.dissabled {
+    opacity: 0.5 !important;
+}
+
+.padding-bar {
+    padding: 6px 0px;
+}
+
+.justify-end-mobile-center {
+
+    @include media(xs) {
+        justify-content: center;
+    }
+}
+
+// SOCIAL BUTTON ***************
+//******************************
+a.social {
+    cursor: pointer;
+    text-decoration: none;
+
+    .icon-social {
+        cursor: pointer;
+        font-size: 1.3rem;
+        color: white;
+        transition: all 0.5s ease;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+// CIERRE SOCIAL BUTTON ********
+//******************************
+.campos-text {
+    color: white;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+.btn-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+    width: 29px;
+    border: 2px solid #bbbbbb;
+    border-radius: 192px;
+    padding: 4px 1px !important;
+    background-color: #ffffff;
+    transition: all 0.7s ease;
+
+    &:hover {
+        background-color: #d2d2d2;
+    }
+}
+
+.btn-ahorro {
+    @include button(white, $verde-unimarc, $verde-unimarc, 120px, 11px 20px);
+    border-radius: 8px;
+    padding: 11px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.7s ease;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 0.98em;
+    max-width: 202px;
+    margin-top: 14px;
+
+    @include media(xs) {
+        max-width: 50%;
+    }
+
+}
+
+.line {
+    height: 3px;
+    width: 100%;
+
+}
+
+#cont-header {
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include media(xs) {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        background-color: #ffffffe0;
+    }
+
+    @include media(md) {
+        flex-direction: column;
+    }
+
+    @include media(lg) {
+        flex-direction: column;
+    }
+
+    @include media(full) {
+        flex-direction: column;
+    }
+
+    @include media(doblefull) {
+        flex-direction: column;
+    }
+
+}
+
+// MENU HAMBURGUESA ****************
+//********************************
+#barra-mobile {
+    border-bottom: 2px solid red;
+
+    @include media(md) {
+        display: none;
+    }
+
+    @include media(lg) {
+        display: none;
+    }
+
+    @include media(full) {
+        display: none;
+    }
+
+    figure {
+        @include inline-percent(45%, left, top);
+
+        a {
+            padding: 14px;
+
+            img {
+                max-width: 162px;
+            }
+
+            i {
+                color: $color-rojo-unimarc;
+                font-size: 3.5em;
+            }
+        }
+    }
+
+    .content-menu {
+        @include inline-percent(50%, -webkit-right, top);
+
+        div.menu-wrapper {
+            display: none;
+            width: $bar-width;
+            height: $bar-height + $bar-spacing*2;
+            text-align: right;
+            margin-left: 18px;
+            cursor: pointer;
+
+            @include media(xs) {
+                display: inline-block;
+            }
+
+            .hamburger-menu {}
+        }
+    }
+}
+
+div.menu-wrapper {
+
+    .hamburger-menu {
+        position: relative;
+        transform: translateY($bar-spacing);
+        background: gray;
+        transition: all 0ms 300ms;
+        top: 25px;
+
+        &.animate {
+            background: rgba(255, 255, 255, 0);
+        }
+    }
+}
+
+.hamburger-menu,
+.hamburger-menu:after,
+.hamburger-menu:before {
+    width: $bar-width;
+    height: $bar-height;
+}
+
+.hamburger-menu:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: $bar-spacing;
+    background: $color-font-menu;
+    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hamburger-menu:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: $bar-spacing;
+    background: $color-font-menu;
+    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hamburger-menu.animate:after {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hamburger-menu.animate:before {
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    ;
+}
+
+// CIERRE MENU HAMBURGUESA *************
+//************************************
+
+// MENU ASIDE SUPERIOR **********************************************************************
+//**************************************************************************************
+#myNav-header {
+    @include media(xs) {
+        width: 76%;
+    }
+}
+
+.items-aside {
+    margin-top: -18px;
+    display: block;
+
+    @include media(xs) {
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 24px;
+        font-size: 0.95em;
+
+        //vertical-align: middle;
+        &:last-child {
+            margin-right: 0px;
+        }
+
+        &:first-child {
+            &::before {
+                content: "";
+            }
+        }
+
+        a {
+            color: white;
+            padding: 2px 0px;
+            display: block;
+
+        }
+
+        &::before {
+            content: ".";
+            color: white;
+            font-weight: bold;
+            position: relative;
+            top: 15px;
+            right: 9px;
+
+            @include media(xs) {
+                content: "";
+            }
+        }
+
+        &::after {
+            content: "";
+
+            @include media(xs) {
+                content: " ";
+                display: block;
+                margin-top: 17px;
+                height: 1px;
+                width: 100%;
+                background-color: #bebebe;
+            }
+        }
+
+        @include media(xs) {
+            display: block;
+            padding: 8px 9px;
+            margin-right: 0px;
+        }
+    }
+}
+
+#service-header {
+    @include inline-percent(47%, right, top);
+    max-width: 516px;
+
+    p {
+        @include inline-percent(42%, right, top);
+        margin-right: 16px;
+    }
+
+    li#custom_html-3 {
+        @include inline-percent(80%, right, top);
+    }
+
+    ul#social {
+        @include inline-percent(36%, right, top);
+
+        @include media(xs) {
+
+            margin-top: 21px !important;
+
+            &::before {
+                content: " ";
+                display: block;
+                margin: 0 auto;
+                margin-top: 3px;
+                margin-bottom: 12px;
+                width: 100%;
+                height: 1px;
+                background-color: #bebebe;
+
+            }
+        }
+
+        li {
+            margin-right: 2px;
+            display: inline-block;
+
+            @include media(xs) {
+                margin-top: 13px;
+            }
+
+            a {
+                @include typo-color(white);
+
+                @include media(xs) {
+                    font-size: 1.5em;
+                    margin: 0px 4px;
+                }
+
+                i {
+
+                    &::before {
+                        border: 1px solid white;
+                        padding: 3px 3px;
+                        border-radius: 5px;
+
+                    }
+
+                }
+            }
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+
+        @include media(xs) {
+
+            @include mobile;
+        }
+    }
+
+    @include media(xs) {
+        @include mobile;
+        margin-top: 12px;
+    }
+
+}
+
+// CIERRE MENU ASIDE SUPERIOR **********************************************************************
+//**************************************************************************************
+
+// MENU PRINCIPAL **********************************************************************
+//**************************************************************************************
+.logo-principal {
+    width: 8%;
+    text-align: left;
+    display: inline-block;
+}
+
+.navbar {
+    @include inline-percent(76.5%, center, top);
+    margin-top: 23px;
+    margin-left: 20px;
+
+    @include media(xs) {
+        width: 92%;
+    }
+
+    .items-right {
+
+        li {
+            display: inline-block;
+            // margin-right: 10px;
+            font-size: 1.4em;
+            padding: 0px 9px;
+
+            @include media(xs) {
+                display: block;
+                padding: 4px 9px;
+                margin-right: 0px;
+            }
+
+            &:last-child {
+                margin-right: 0px;
+
+
+                &::after {
+                    content: "|";
+                    color: #bdbdbd;
+                    font-weight: 100;
+                    position: relative;
+                    margin-left: 10px;
+
+                    @include media(xs) {
+                        content: "";
+                    }
+                }
+                @include media(xs) {
+                    &::after {
+                        margin: 0 auto; 
+                        margin-top: 14px;
+                    }
+                   
+                }
+            }
+
+            &::before {
+                content: "|";
+                color: #bdbdbd;
+                position: relative;
+                right: 8px;
+                font-weight: 100;
+
+                @include media(xs) {
+                    content: "";
+                   
+                }
+            }
+
+            &::after {
+                @include media(xs) {
+                    content: "";
+                height: 1px;
+                width: 86%;
+                display: block;
+                margin: 0 auto;
+                margin-top: 14px;
+                background-color: $font-footer;
+
+                
+                }
+                
+            }
+
+
+            //     // @include media(doblefull) {
+            //     //     content: "";
+            //     //     display: none;
+
+            //     // }
+
+            //     // @include media(full) {
+            //     //     content: "";
+            //     //     display: none;
+
+            //     // }
+
+            //     // @include media(lg) {
+            //     //     content: "";
+            //     //     display: none;
+
+            //     // }
+
+            //     // @include media(md) {
+            //     //     content: "";
+            //     //     display: none;
+
+            //     // }
+
+            //     // @include media(sm) {
+            //     //     content: "";
+            //     //     display: none;
+
+            //     // }
+            // }
+
+            a {
+                font-family: 'Clarendon Cn BT', Helvetica, Arial, sans-serif;
+                color: #5d5d5d;
+                padding: 0px 8px;
+            }
+
+
+            // &:first-child {
+            //     margin-right: 0px;
+
+
+            //     &::before {
+            //         content: "";
+            //         color: #bdbdbd;
+            //         font-weight: 100;
+            //         position: relative;
+
+            //         @include media(xs) {
+            //             content: "";
+            //         }
+            //     }
+            // }
+        }
+    }
+}
+
+// CIERRE MENU PRINCIPAL **********************************************************************
+//**************************************************************************************
+.block {
+    height: 189px;
+    transition: all 0.7s ease;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-15%);
+        box-shadow: 0 19px 19px rgba(0, 0, 0, 0.3);
+    }
+
+    @include media(xss) {
+        height: 200px;
+    }
+
+    @include media(xs) {
+        height: 200px;
+    }
+}
+
+.block-gray {
+    @extend .block;
+    background-color: $bkg-color-box-a;
+}
+
+.block-white {
+    @extend .block;
+    background-color: $bkg-color-box-b;
+}
+
+.border-top {
+    border-top: 3px solid $color-primary;
+}
+
+//grid
+$numero-columnas: 12;
+$grilla: 1200px;
+
+[class*='col-'] {
+    display: inline-block;
+    padding: 0.8em;
+    width: 100%;
+}
+
+@mixin grilla {
+    @media only screen and(min-width: #{$grilla}) {
+        @content;
+    }
+}
+
+@include grilla {
+    @for $i from 1 through $numero-columnas {
+        .col-#{$i} {
+            width: 100% / $numero-columnas * $i;
+        }
+    }
+}
+
+//CIERRE grid
+// PERSONALIZACION SLIDER ***********************************************************
+//***********************************************************************************
+.slider {
+    .flexslider-container {
+        .text_slider {
+            position: absolute;
+            top: 38%;
+            /* left: 0%; */
+            padding-left: 18px;
+        }
+    }
+}
+
+// CIERRE PERSONALIZACION SLIDER ***********************************************************
+//***********************************************************************************
+
+.bajada {
+    position: absolute;
+    bottom: 30%;
+    right: 49%;
+    left: 49%;
+    transform: translate(-49%, -49%);
+}
+
+.item {
+    height: 436px;
+
+    @include media(xss) {
+        text-align: center;
+    }
+}
+
+// ESTRUCTURA WEB *******************************************************************
+//***********************************************************************************
+//HEADER
+nav#nav {
+    border-bottom: 1px solid gray;
+
+    @include media(xs) {
+        display: none;
+    }
+
+    h1.logo-principal {
+        @include media(xs) {
+            display: none;
+        }
+
+        figure.logos-gob {
+            margin-bottom: 13px;
+
+            a.logs {
+                text-decoration: none;
+
+                img {
+                    &.gob {
+                        display: inline-block;
+                        width: 100%;
+                        max-width: 88px;
+                        vertical-align: top;
+                        margin-top: -26px;
+                    }
+
+                    &.dtp {
+                        display: inline-block;
+                        width: 100%;
+                        max-width: 53px;
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+    }
+
+    .cont-ahorro {
+        @include inline-percent(13%, right, top);
+
+        @include media(xs) {
+            @include mobile;
+        }
+    }
+}
+
+// CIERRE ESTRUCTURA WEB *******************************************************************
+//***********************************************************************************

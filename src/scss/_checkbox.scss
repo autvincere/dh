@@ -1,0 +1,63 @@
+/**
+ * Declare local vars (only used here)
+ */
+
+ $checkbox-size: 20px;
+ $check-width: 12px;
+ $check-height: 8px;
+ $check: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJMYXllcl8xIiB2aWV3Qm94PSIwIDAgMTIgOCI+DQogIDxzdHlsZT4NCiAgICAuc3Qwe2ZpbGw6I2ZmMDA5OTt9DQogIDwvc3R5bGU+DQogIDxwYXRoIGQ9Ik00LjUgOEM0LjMgOCA0IDggNCA3LjhMLjIgNC40QzAgNCAwIDMuNC4yIDMuMnMxLS4zIDEuMyAwbDMgMi43IDYtNmMuMy0uMyAxLS4zIDEuMiAwcy4zIDEgMCAxLjJMNSA3LjhsLS41LjJ6IiBjbGFzcz0ic3QwIi8+DQo8L3N2Zz4=';
+ 
+ 
+ /**
+  * Checkbox input styles
+  */
+ 
+ .check {
+   position: relative;
+ 
+   &__text {
+     display: block;
+     padding: 0px 0px 0px 35px;
+     font-size: 0.9em;
+     text-align: left;
+     margin-top: -9px;
+     line-height: $checkbox-size;
+ 
+     &::before,
+     &::after {
+       content: '';
+     }
+ 
+     &::before {
+       position: absolute;
+       top: 0;
+       left: 0;
+       display: block;
+       width: $checkbox-size;
+       height: $checkbox-size;
+       border-radius: 0.2em;
+       border: solid 1px #cccccc;
+     }
+ 
+     &::after {
+       position: absolute;
+       top: ((($checkbox-size  - $check-height) / 2) + 1);
+       left: ((($checkbox-size  - $check-width) / 2) + 1);
+       display: block;
+       width: $check-width;
+       height: $check-height;
+       opacity: 0;
+       transition: opacity 300ms ease-in-out;
+       background: url($check) center no-repeat;
+ 
+       :checked ~ & {
+         opacity: 1;
+       }
+     }
+   }
+ 
+   &__input {
+     position: absolute;
+     left: -999em;
+   }
+ }

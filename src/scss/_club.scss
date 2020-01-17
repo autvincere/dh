@@ -1,0 +1,116 @@
+#club {
+     #sliders {
+
+          // &:first-child {
+          //   margin-right: 9px;
+          // }
+          .slider {
+               figure{
+                         padding: 12px 0 0 0;
+                    img{
+                         max-width: 100px;
+                    }
+               }
+               h2{
+                  color: $verde-unimarc;
+                  padding: 0px 0px 10px 0px;  
+               }
+               .fieldset-form{
+                    &>* {margin-bottom: 9.3px;
+                    }
+                    select{
+                         height: 37px;
+                    }
+                    label{
+                         padding: 5px 0px 4px 0px;
+                         display: inline-block;
+                    }
+                    input{
+                         height: 38px;
+                         border-radius: 7px;
+                         border: 1px solid #a5a5a5;
+                         padding: 0px 8px;
+                         }
+                    &::nth-last-child(2){
+                         margin-bottom: 20px;
+                    }
+                    .btn-ahorro{
+                         padding: 8px 41px;
+                         margin-top: 0px;
+                    }
+                    .adjust-left-input{
+                         width: 50%;
+                         margin-right: 20px;
+                    }
+               }
+               @include inline-percent(56%, center, top);
+               margin-bottom: -4px;
+
+               &:last-child {
+                    margin-left: 19px;
+                    width: 40%;
+                    @include media(xs) {
+                         @include mobile;
+                     }
+                   
+               }
+
+               @include media(xs) {
+                    @include mobile;
+               }
+
+               .flexslider-container {
+
+                    .flexslider {
+
+                         .flex-control-nav {
+                              bottom: 23px;
+                              position: absolute;
+
+                              li {
+
+                                   .flex-active {
+                                        background-color: $color-rojo-unimarc;
+                                   }
+
+                                   a {
+                                        width: 36px;
+                                        height: 6px;
+                                        display: block;
+                                        border: transparent;
+                                        border-radius: 0px;
+                                        background: rgba(255, 255, 255, 0.5);
+                                        cursor: pointer;
+                                        text-indent: -9999px;
+                                        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+                                   }
+                              }
+                         }
+
+                         .flex-viewport {
+
+                              .slides {
+
+                                   li {
+                                        a {
+                                             position: relative;
+                                             button {
+                                                  @include button(transparent, white, white, 143px, 6px 6px);
+                                                  font-size: 0.9em;
+                                                  text-transform: capitalize;
+                                                  position: absolute;
+                                                  bottom: 59px;
+                                                  left: 40%;
+                                                  img {
+                                                       width: 100%;
+                                                  }
+                                             }
+                                        }
+                                   }
+                              }
+                         }
+                    }
+               }
+          }
+     }
+}

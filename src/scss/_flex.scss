@@ -1,0 +1,59 @@
+.flex{
+    display: flex; 
+}
+.align-vertical{
+    flex-direction: column;
+}
+.flex-column{
+    flex-direction: column;
+}
+.align-vertical-reverse{
+    flex-direction: column-reverse;
+}
+
+.align-horizontal {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+
+     @include media(xs) {
+        justify-content: center;
+    }
+     
+ }
+ .flex-align-center{
+     align-items: center;
+ }
+ .flex-align-start{
+     align-items: flex-start;
+ }
+ .flex-align-end{
+    align-items: flex-end;
+}
+ .space-around{
+     justify-content: space-around;
+     @include media(xs) {
+        justify-content: center;
+    }
+ }
+ .space-between{
+     justify-content: space-between;
+     @include media(xs) {
+        justify-content: center;
+    }
+ }
+ .flex-justify-end{
+     justify-content: flex-end;
+ }
+ .flex-center{
+    justify-content: center!important;
+ }
+ .flex-center-mobile{
+    @include media(xs) {
+        flex-direction: column!important;
+        align-items: center!important;
+        justify-content: center!important;
+    }
+    
+ }
+ //CIERRE CLASES FLEX

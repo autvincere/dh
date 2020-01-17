@@ -1,0 +1,33 @@
+#intro { 
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	.intro { 
+		width: 29%;
+		margin: 0 15px 15px 0px;
+		article { 
+
+			h2 { 
+				font-size: 2.3em;
+				& + h2{
+					font-size: 2.65em;
+				}
+			}
+			
+			p { 
+				text-transform: initial;
+				font-size: 1.2em;
+				text-align: right;
+			}
+
+			a { 
+				text-align: right;
+				display: block;
+
+				.icon { 
+
+				}
+			}
+		}
+	}
+}

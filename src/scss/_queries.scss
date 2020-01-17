@@ -1,0 +1,45 @@
+/* variables:*/
+$grilla: 1140px;
+$breakpoint-cero: 0px;
+$breakpoint-xs: 320px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1370px;
+$breakpoint-full: 1920px;
+$breakpoint-doblefull: 3840px;
+//tamaños celulares
+$iphone4s: 320px; 
+$wvga: 480px;
+@mixin media($media) {
+    
+    @if $media == xss {
+        @media (min-width: $breakpoint-cero) and (max-width: $breakpoint-xs) { @content; }
+    }
+    @else if $media == xs {
+        @media (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm) { @content; }
+    }
+    @else if $media == sm {
+        @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) { @content; }
+    }
+    @else if $media == md {
+        @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) { @content; }
+    }
+    @else if $media == lg {
+        @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-full) { @content; }
+    }
+    @else if $media == full {
+        @media (min-width: $breakpoint-full) and (max-width: $breakpoint-doblefull){ @content; }
+    }
+    @else if $media == doblefull {
+        @media (min-width: $breakpoint-doblefull) { @content; }
+    }
+    
+    //celulares
+    
+    @if $media == iphone4s {
+        @media (min-width: $breakpoint-cero) and (max-width: $breakpoint-xs) { @content; }
+            }
+    @if $media == wvga {
+        @media (min-width: $iphone4s) and (max-width: $wvga) { @content; }
+    }
+}
