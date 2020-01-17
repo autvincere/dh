@@ -36,63 +36,26 @@ Text Domain: Unimarc
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-icons_unimarc_arrow-down:before {
+.icon-icons_prev:before {
   content: "\e900"; }
 
-.icon-icons_unimarc_arrow-right-15:before {
+.icon-icons_facebook:before {
   content: "\e901"; }
 
-.icon-icons_unimarc_arrow-right-16:before {
+.icon-icons_instagram:before {
   content: "\e902"; }
 
-.icon-icons_unimarc_club_ahorro:before {
+.icon-icons_hand:before {
   content: "\e903"; }
 
-.icon-icons_unimarc_facebook:before {
+.icon-icons_next:before {
   content: "\e904"; }
 
-.icon-icons_unimarc_geo:before {
+.icon-icons_persona:before {
   content: "\e905"; }
 
-.icon-icons_unimarc_instagram:before {
+.icon-icons_twitter:before {
   content: "\e906"; }
-
-.icon-icons_unimarc_isotipo:before {
-  content: "\e907"; }
-
-.icon-icons_unimarc_lupa:before {
-  content: "\e908"; }
-
-.icon-icons_unimarc_mail:before {
-  content: "\e909"; }
-
-.icon-icons_unimarc_spotify:before {
-  content: "\e90a"; }
-
-.icon-icons_unimarc_star:before {
-  content: "\e90b"; }
-
-.icon-icons_unimarc_twitter:before {
-  content: "\e90c"; }
-
-.icon-icons_unimarc_unimarc-02:before {
-  content: "\e90d"; }
-
-.icon-icons_unimarc_unimarc-11:before {
-  content: "\e90e"; }
-
-.icon-icons_unimarc_unired:before {
-  content: "\e90f"; }
-
-.icon-icons_unimarc_youtube:before {
-  content: "\e910"; }
-
-@font-face {
-  font-family: 'Clarendon Cn BT';
-  src: url("../fonts/web/ClarendonBT-RomanCondensed.eot");
-  src: url("../fonts/web/ClarendonBT-RomanCondensed.eot?#iefix") format("embedded-opentype"), url("../fonts/web/ClarendonBT-RomanCondensed.ttf") format("truetype"), url("../fonts/web/ClarendonBT-RomanCondensed.woff") format("woff"), url("../fonts/web/ClarendonBT-RomanCondensed.woff2") format("woff2"), url("../fonts/web/ClarendonBT-RomanCondensed.svg#ClarendonBT-RomanCondensed") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 
 /* variables:*/
 .flex {
