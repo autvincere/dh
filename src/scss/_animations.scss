@@ -1,0 +1,10 @@
+@keyframes right-arrow {
+     0% {
+       /*                    @include transform(translateY(-1px));*/
+       transform: translate(0px, 0px); }
+     50% {
+       /*                    @include transform(translateY(15px));*/
+       transform: translate(-10px, 0px); }
+     100% {
+       /*                     @include transform(translateY(0px));*/
+       transform: translate(0px, 0px); } }
