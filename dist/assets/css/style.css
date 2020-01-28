@@ -338,6 +338,44 @@ input[type="email"]:focus {
         -o-animation: right-arrow 1.5s ease-out 0s infinite;
         animation: right-arrow 1.5s ease-out 0s infinite; }
 
+#main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    #main {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -moz-box-orient: vertical;
+      -moz-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; } }
+  #main article#map {
+    background-color: #797979;
+    width: 65vw;
+    height: 100vh; }
+    @media (min-width: 320px) and (max-width: 767px) {
+      #main article#map {
+        width: 100vw;
+        height: 64vh; } }
+  #main #content {
+    background-color: green;
+    width: 35vw;
+    height: 100vh; }
+    @media (min-width: 320px) and (max-width: 767px) {
+      #main #content {
+        width: 100vw; } }
+
 * {
   margin: 0;
   padding: 0;

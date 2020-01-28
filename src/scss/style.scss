@@ -16,6 +16,7 @@ Text Domain: Unimarc
 @import 'utilidades';
 @import "animations";
 @import "intro";
+@import "main";
 
 // ESTILOS GENERALES *******************************************************************
 //***********************************************************************************
@@ -95,6 +96,7 @@ select:focus {
     position: absolute;
     top: 14px;
     left: 14px;
+    // z-index: 1;
 }
 .logo_header--size{
     max-width: 114px;
