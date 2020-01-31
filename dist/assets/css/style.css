@@ -36,16 +36,16 @@ Text Domain: Unimarc
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-icons_prev:before {
+.icon-icons_facebook:before {
   content: "\e900"; }
 
-.icon-icons_facebook:before {
+.icon-icons_instagram:before {
   content: "\e901"; }
 
-.icon-icons_instagram:before {
+.icon-icons_lupa:before {
   content: "\e902"; }
 
-.icon-icons_hand:before {
+.icon-icons_mano:before {
   content: "\e903"; }
 
 .icon-icons_next:before {
@@ -54,8 +54,11 @@ Text Domain: Unimarc
 .icon-icons_persona:before {
   content: "\e905"; }
 
-.icon-icons_twitter:before {
+.icon-icons_prev:before {
   content: "\e906"; }
+
+.icon-icons_twitter:before {
+  content: "\e907"; }
 
 /* variables:*/
 .flex {
@@ -369,12 +372,44 @@ input[type="email"]:focus {
         width: 100vw;
         height: 64vh; } }
   #main #content {
-    background-color: green;
+    background-color: white;
     width: 35vw;
     height: 100vh; }
     @media (min-width: 320px) and (max-width: 767px) {
       #main #content {
         width: 100vw; } }
+
+#buscador input {
+  background: transparent;
+  border: 0px solid transparent;
+  position: relative;
+  overflow: visible; }
+  #buscador input::after {
+    content: '';
+    display: block;
+    background-color: red;
+    width: 3px;
+    height: 48px;
+    position: absolute;
+    top: 24px;
+    right: 4px;
+    left: -2px; }
+  #buscador input::-webkit-input-placeholder {
+    color: red;
+    font-size: 1.3em;
+    font-family: 'Special Elite', Helvetica, sans-serif; }
+  #buscador input::-moz-placeholder {
+    color: red;
+    font-size: 1.3em;
+    font-family: 'Special Elite', Helvetica, sans-serif; }
+  #buscador input::-ms-input-placeholder {
+    color: red;
+    font-size: 1.3em;
+    font-family: 'Special Elite', Helvetica, sans-serif; }
+  #buscador input::placeholder {
+    color: red;
+    font-size: 1.3em;
+    font-family: 'Special Elite', Helvetica, sans-serif; }
 
 * {
   margin: 0;
@@ -415,6 +450,11 @@ li {
 select:focus {
   outline: none; }
 
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  margin: 0; }
+
 .center-grilla {
   max-width: 1200px;
   margin: 0 auto;
@@ -446,7 +486,8 @@ select:focus {
 .logo {
   position: absolute;
   top: 14px;
-  left: 14px; }
+  left: 14px;
+  z-index: 1; }
 
 .logo_header--size {
   max-width: 114px;

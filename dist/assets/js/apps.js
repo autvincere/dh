@@ -447,10 +447,10 @@ let
             document.getElementById('map'), 
             {zoom: 14, 
             center: santiago,
+            mapTypeControl: false,
+            fullscreenControl: false,
             styles: grayContrast
             });
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
       }
       initMap()
 //  window.onload = init;

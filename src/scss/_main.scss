@@ -14,11 +14,43 @@
                }    
 	}
 	#content { 
-          background-color: green;
+          background-color: white;
           width: 35vw;
           height: 100vh;
           @include media(xs) {
                width: 100vw;
                }
+          article{
+          }
+	}
+}
+
+#buscador { 
+	.icon-icons_lupa { 
+
+	}
+	input { 
+          background: transparent;
+          border: 0px solid transparent;
+          position: relative;
+          overflow: visible;
+          // border-bottom: 2px solid gray;
+          &::after {
+               content: '';
+               display: block;
+               background-color: red;
+               width: 3px;
+               height: 48px;
+               position: absolute;
+               top: 24px;
+               right: 4px;
+               left: -2px;
+          }
+          &::placeholder{
+               color: red;
+               font-size: 1.3em;
+               font-family: 'Special Elite', Helvetica, sans-serif;
+          }
+        
 	}
 }

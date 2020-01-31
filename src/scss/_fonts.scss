@@ -26,33 +26,29 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-icons_prev:before {
-  content: "\e900";
-
-}
 .icon-icons_facebook:before {
-  content: "\e901";
-
+  content: "\e900";
 }
 .icon-icons_instagram:before {
-  content: "\e902";
-  
+  content: "\e901";
 }
-.icon-icons_hand:before {
+.icon-icons_lupa:before {
+  content: "\e902";
+}
+.icon-icons_mano:before {
   content: "\e903";
-  
 }
 .icon-icons_next:before {
   content: "\e904";
- 
 }
 .icon-icons_persona:before {
   content: "\e905";
- 
+}
+.icon-icons_prev:before {
+  content: "\e906";
 }
 .icon-icons_twitter:before {
-  content: "\e906";
- 
+  content: "\e907";
 }
 
 //typografias google fonts

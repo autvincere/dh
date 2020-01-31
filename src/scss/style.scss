@@ -64,7 +64,10 @@ li {
 select:focus {
     outline: none;
 }
-
+input::-moz-focus-inner {border:0; padding:0; margin:0;}
+.reset-input{
+    
+}
 // ESTILOS REUTILIZABLES *******************************************************************
 //***********************************************************************************
 .center-grilla {
@@ -96,7 +99,7 @@ select:focus {
     position: absolute;
     top: 14px;
     left: 14px;
-    // z-index: 1;
+    z-index: 1;
 }
 .logo_header--size{
     max-width: 114px;
